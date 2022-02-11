@@ -23,7 +23,6 @@ export default function Home() {
   //get the location
   const location = useLocation();
   const pathID = location.pathname.split("/")[2];
-  console.log(pathID);
 
   //getting that data from the redux store or state
   const { popular, newGames, upcoming } = useSelector((state) => state.games);
