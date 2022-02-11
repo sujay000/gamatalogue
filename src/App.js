@@ -10,8 +10,11 @@ function App() {
       {/* <Routes>
         <Route path={["/game/:id", "/"]} element={<Home />} />
       </Routes> */}
+      <Routes>
+        <Route path="/*" element={<Home />}></Route>
+      </Routes>
 
-      <Home />
+      {/* <Home /> */}
     </div>
   );
 }

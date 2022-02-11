@@ -30,7 +30,7 @@ export default function Home() {
 
   return (
     <GameList>
-      {/* {pathID && <GameDetail />} */}
+      {pathID && <GameDetail />}
 
       <h2>Upcoming games</h2>
       <Games>
