@@ -6,8 +6,15 @@ import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { smallImage } from "../util";
+//Images
+import playstation from "../img/playstation.svg";
+import steam from "../img/steam.svg";
+import xbox from "../img/xbox.svg";
+import nintendo from "../img/nintendo.svg";
+import apple from "../img/apple.svg";
+import gamepad from "../img/gamepad.svg";
 
-const GameDetail = () => {
+const GameDetail = ({ pathID }) => {
   const navigate = useNavigate();
   //exit detail
   const exitDetailHandler = (e) => {
@@ -18,29 +25,52 @@ const GameDetail = () => {
     }
   };
 
+  //GET PLATFORM IMAGES
+  const getPlatform = (platform) => {
+    switch (platform) {
+      case "PlayStation 4":
+        return playstation;
+      case "Xbox One":
+        return xbox;
+      case "PC":
+        return steam;
+      case "Nintendo Switch":
+        return nintendo;
+      case "iOS":
+        return apple;
+      default:
+        return gamepad;
+    }
+  };
+
   const { screen, game, isLoading } = useSelector((state) => state.detail);
 
   return (
     <>
       {!isLoading && (
         <CardShadow className="shadow" onClick={exitDetailHandler}>
-          <Detail>
+          <Detail layoutId={pathID}>
             <Stats>
               <div className="rating">
-                <h3>{game.name}</h3>
+                <motion.h3 layoutId={`title ${pathID}`}>{game.name}</motion.h3>
                 <p>Rating: {game.rating}</p>
               </div>
               <Info>
                 <h3>Platforms</h3>
                 <Platforms>
                   {game.platforms.map((data) => (
-                    <h3 key={data.platform.id}>{data.platform.name}</h3>
+                    <img
+                      alt={data.platform.name}
+                      key={data.platform.id}
+                      src={getPlatform(data.platform.name)}
+                    />
                   ))}
                 </Platforms>
               </Info>
             </Stats>
             <Media>
-              <img
+              <motion.img
+                layoutId={`image ${pathID}`}
                 src={smallImage(game.background_image, 1280)}
                 alt="game-bg"
               />

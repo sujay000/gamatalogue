@@ -1,15 +1,18 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
-import GlobalStyles from "./components/GlobalStyles";
+//pages and components
 import Home from "./pages/Home";
+import Nav from "./components/Nav";
+
+//router
+import { Route, Routes } from "react-router-dom";
+//styles
+import GlobalStyles from "./components/GlobalStyles";
 
 function App() {
   return (
     <div className="App">
       <GlobalStyles />
-      {/* <Routes>
-        <Route path={["/game/:id", "/"]} element={<Home />} />
-      </Routes> */}
+      <Nav />
       <Routes>
         <Route path="/*" element={<Home />}></Route>
       </Routes>
