@@ -7,6 +7,8 @@ import { createStore, compose, applyMiddleware } from "redux";
 import rootReducer from "./reducers"; //as it is in src/reducers/index.js we can just import it
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
+//browser router
+import { BrowserRouter } from "react-router-dom";
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -15,7 +17,9 @@ const store = createStore(rootReducer, composeEnhancer(applyMiddleware(thunk)));
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")
